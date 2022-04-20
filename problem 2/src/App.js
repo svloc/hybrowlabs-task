@@ -3,6 +3,10 @@ import "./style.css";
 
 export default function App() {
   const data=['sachin','lokare','ABC',"XYZ"];
+  const delete_name=(index)=>{
+   data.splice(index,1);
+  console.log(index)
+  }
   return (
     <div className="container">
       <div className="pb-1">
@@ -10,18 +14,24 @@ export default function App() {
       </div>
      <div>
        <table>
+         
+           <thead>
          <tr>
            <th>Name</th>
            <th>Action</th>
          </tr>
-         <tr>
-           <td>sachin</td>
-           <td><button className="btn btn-red">Delete</button></td>
-         </tr>
-         <tr>
-           <td>lokare</td>
-           <td><button className="btn btn-red">Delete</button></td>
-         </tr>
+         </thead>
+         <tbody>
+           {data.map((ele,index)=>{
+            return(<tr key={index}>
+              <td>{ele}</td>
+              <td><button className="btn btn-red" type="button" onClick={()=>delete_name(index)}>Delete</button></td>
+              </tr>)
+            
+           })}
+           
+           
+           </tbody>
        </table>
      </div>
     </div>
